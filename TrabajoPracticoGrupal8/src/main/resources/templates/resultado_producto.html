@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Exito!</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+<body>
+	<header th:replace="/layouts/header :: header"> </header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10"> 
+				<h3>El producto ha sido guardado!</h3>
+				<a href="/producto/ultimo">Ver el ultimo producto.</a>
+			</div>
+			<aside th:replace="/layouts/publicidad :: aside"> </aside>
+		</div>
+	</div>
+		<footer th:replace="/layouts/footer :: footer"> </footer>
+		<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+</body>
+</html>

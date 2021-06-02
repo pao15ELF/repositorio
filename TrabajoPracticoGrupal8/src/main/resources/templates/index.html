@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Pagina principal</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body>
+		<header th:replace="/layouts/header :: header"> </header>
+		<div class="container-fluid"> 
+			<div class="row">
+				<div class="col-sm-12 col-md-10">
+					<div class="card-deck">
+					  <!-- Primer contenido -->				
+					  <div class="col">
+					    <div class="card h-100"> <!-- para que todas las cards tengan el mismo largo h-100-->
+					      	<a href="https://www.huercasa.com/es/blog/ranking-30-alimentos-saludables">
+					      		<img src="/images/noticias-alimentos.jpg" class="card-img-top" alt="...">
+					      	</a> 
+					      <div class="card-body">
+					        <h5 class="card-title">30 alimentos más importantes para tu cuerpo</h5>
+					        <p class="card-text">La importancia de nuestra salud reside entre otras cosas en la alimentación
+					        					 que llevamos, hoy te hablamos de alimentos saludables: ranking de los 30 alimentos
+					        					 más importantes para tu cuerpo.</p>
+					        <a href="https://www.huercasa.com/es/blog/ranking-30-alimentos-saludables">ver mas...</a>
+					      </div>
+					    </div>
+					  </div>
+					  <!-- Fin primer contenido -->
+					  <!-- Segundo contenido -->
+					  <div class="col">
+					    <div class="card h-100">
+					    	<a href="https://www.tuasaude.com/es/alimentos-sin-gluten/"> 
+					    		<img src="/images/noticias-alimentos-gluten.jpg" class="card-img-top" alt="...">
+					    	</a> 
+					      <div class="card-body">
+					        <h5 class="card-title">15 Alimentos sin gluten que pueden ser incluidos en la dieta</h5>
+					        <!-- <p class="card-text">15 Alimentos sin gluten que pueden ser incluidos en la dieta</p> -->
+					        <a href="https://www.tuasaude.com/es/alimentos-sin-gluten/">ver mas...</a>
+					      </div>
+					    </div>
+					  </div>
+					  <!-- Fin segundo contenido -->
+					  <!-- Tercer contenido -->
+					  <div class="col">
+					    <div class="card h-100"> <!-- para que todas las cards tengan el mismo largo h-100-->
+					      <a href="https://www.bmicos.com/blog/7-beneficios-de-tener-contacto-con-la-naturaleza/">
+					     		 <img src="/images/noticias-naturaleza.png" class="card-img-top" alt="...">
+					      </a>
+					      <div class="card-body">
+					        <h5 class="card-title">7 Beneficios de tener contacto con la naturaleza</h5>
+					        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+					        <a href="https://www.bmicos.com/blog/7-beneficios-de-tener-contacto-con-la-naturaleza/">Ver mas...</a>
+					      </div>
+					    </div>
+					  </div>
+					  <!-- Fin tercer contenido -->
+					</div>				
+				 </div>
+				 <aside th:replace="/layouts/publicidad :: aside"> </aside>
+			 </div>
+		</div>
+		
+		<footer th:replace="/layouts/footer :: footer"> </footer>
+		<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Producto Nuevo</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+<body>
+	<header th:replace="/layouts/header :: header"> </header>
+		<div class="container">
+			<div class="row col-sm-10 col-md">
+				<div class="col-sm-10 col-md">
+					<h3>Cargar datos de un producto</h3>
+					<hr>
+					<!-- Formulario -->
+					<form action="/producto/guardar" th:object="${producto}" method="post">
+						<!-- Atributo id del producto oculto -->
+						<input type = "hidden" th:field="*{id}"/>
+						
+						<!-- Nombre del producto -->
+						<div class="form-group">
+						    <label for="nombre">Nombre</label>
+						    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del prod." th:field="*{nombre}">
+						</div>
+						<!-- Fin nombre del producto -->
+						
+						<!-- Precio del producto-->
+						<div class="form-group">
+						    <label for="precio">Precio</label>
+						    <input type="number" class="form-control" id="precio" placeholder="Ingrese precio" th:field="*{precio}">
+						</div>
+						<!-- Fin precio -->
+						<!-- Marca del producto-->
+						<div class="form-group">
+						    <label for="marca">Marca</label>
+						    <input type="text" class="form-control" id="marca" placeholder="Ingrese marca" th:field="*{marca}">
+						</div>
+						<!-- Stock del producto -->
+						<div class="form-group">
+						    <label for="stock">Stock</label>
+						    <input type="number" class="form-control" id="stock" placeholder="Ingrese stock" th:field="*{stock}">
+						</div>
+						<!-- Fin de stock del producto -->
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</form>
+					<!-- Fin Formulario -->
+					</div>
+			<aside th:replace="/layouts/publicidad :: aside"> </aside>
+		</div>
+	</div>
+		<footer th:replace="/layouts/footer :: footer"> </footer>
+		<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+</body>
+</html>

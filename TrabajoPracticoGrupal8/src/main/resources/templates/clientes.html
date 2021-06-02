@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Clientes</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+<body>
+	<header th:replace="/layouts/header :: header"> </header>
+	<div class="container-fluid">
+		<div class="row">
+			<section class="col-md-10">
+				<h3 class="text-center"> Listado de Clientes</h3>
+				<hr>
+				<div class="text-center">
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-dark"> 
+								<tr> 
+									<th > Tipo Doc.</th>
+									<th> Nº. Doc.</th>
+									<th> Apellido Nombre </th>
+									<th> Email </th>
+									<th> Fecha de Nac. </th>
+									<th> Ultima Compra</th>
+									<th> Edad </th>
+									<th> Teléfono </th>
+									<th> T.D. Cumpleaños</th>
+									<th> T.D. Fecha Nac.</th>
+									<th> T.D. Ultima Compra</th>
+									<th> Acciones </th>
+				 				</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c:${clientes}">
+									<td th:text="${c.tipoDocumento}"> </td>
+									<td th:text="${c.nroDocumento}"> </td>
+									<td	th:text="${#strings.toUpperCase(c.nombreApellido)}"> </td>
+									<td th:text="${c.email}"> </td>
+									<td th:text="${#temporals.format(c.fechaNacimiento, 'dd/MM/yyyy')}"> </td>
+									<td th:text="${#temporals.format(c.fechaUltimaCompra, 'dd/MM/yyyy')}"> </td>
+									<td th:text="${c.getEdad}"> </td>
+									<td th:text="${c.codigoAreaTelefono} + '-' + ${c.nroTelefono}"> </td>
+									<td th:text="${c.getTiempoHastaCumple}"> </td>
+									<td th:text="${c.getTTransDesdeFechaN}"> </td>
+									<td th:text="${c.getTTransDesdeUltCompra}"> </td>
+									<td> 
+										<a th:href="@{/cliente/editar/}+${c.id}" class= "btn btn-warning" >EDITAR</a>
+										<br><br>
+										<a th:href="@{/cliente/eliminar/}+${c.id}" class= "btn btn-danger" >ELIMINAR</a>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>	
+				</div>	
+			</section>
+			 <aside th:replace="/layouts/publicidad :: aside"> </aside>
+		</div>
+	</div>
+		<footer th:replace="/layouts/footer :: footer"> </footer>
+<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+</body>
+</html>

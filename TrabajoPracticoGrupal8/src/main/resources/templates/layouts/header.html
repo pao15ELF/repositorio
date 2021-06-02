@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<header th:fragment="header"> 
+			<div class="jumbotron jumbotron-fluid" style="background-image: url(/images/imagen.jpg); background-size: 100%">
+			  <div class="container">
+			    <h1 class="display-4 text-white">Gestión de Compra y Clientes</h1>
+			    <p class="lead text-white">Bienvenido a la pagina inicial de gestión de compras.</p>
+			    
+			    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <!--  <a class="navbar-brand" >Navegación</a> -->
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+				    <ul class="navbar-nav">
+				      <li class="nav-item active">
+				        <a class="nav-link" href="/index">Inicio <span class="sr-only">(current)</span></a>
+				      </li>
+				      <!-- Productos -->				      
+				       <li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					         	Productos
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					          <a class="dropdown-item" href="/producto">Nuevo Producto</a>
+					          <a class="dropdown-item" href="/producto/listado">Listado Productos</a>
+					          <a class="dropdown-item" href="/producto/ultimo">Ultimo Producto</a>
+					        </div>
+				      </li>
+				      <!-- Fin Productos -->
+				      <!-- falta un li -->
+				      <!-- Clientes -->
+				      <li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					         	Clientes
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					          <a class="dropdown-item" href="/cliente/nuevo">Nuevo Cliente</a>
+					          <a class="dropdown-item" href="/cliente/listado">Listado Clientes</a>
+					        </div>
+				      </li>
+				      <!-- Fin clientes -->
+				      <!-- Compras -->
+				      <li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					         	Compras
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					          <a class="dropdown-item" href="/compra/nuevo">Nuevo Compra</a>
+					          <a class="dropdown-item" href="/compra/listado">Listado Compras</a>
+					        </div>
+				      </li>
+				      <!-- Fin Compras -->
+				    </ul>
+				  </div>
+				</nav>
+			  </div>
+			</div>
+		 </header>
+	</body>
+</html>

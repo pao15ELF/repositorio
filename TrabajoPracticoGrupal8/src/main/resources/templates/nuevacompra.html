@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Nueva Compra</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body>
+	<header th:replace="/layouts/header :: header"> </header>
+			<div class="container">
+				<div class="row col-sm-10 col-md">
+					<div class="col-sm-10 col-md">
+						<h1>Nueva Compra</h1>
+						<form th:action="@{/compra/guardar}" th:object="${nuevaCompra}" method="post">
+							<input type = "hidden" th:field="*{id}"/>
+							<!-- Seleccionar nombre de producto -->
+								<label>Producto</label>
+								<select th:field="*{producto}" class="form-control">	
+										<option th:each="producto : ${productos}" 
+												th:value="${producto.id}" 
+												th:text="${producto.nombre}"
+												th:selected="false"
+												>
+										</option>
+										
+								</select>
+						
+							<!-- Fin Seleccionar -->
+							<br>
+							<!-- Cantidad de prod -->
+							<div class="form-group">
+								    <label for="cantProd">Cantidad</label>
+								    <input type="number" class="form-control" id="cantProd" th:field="*{cantidad}" placeholder="Ingrese cantidad">
+							</div>
+				
+							<!-- Fin cantidad  -->
+							<input type = "hidden" th:field="*{total}"/>
+							<br><br>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</form>
+						</div>
+				<aside th:replace="/layouts/publicidad :: aside"> </aside>
+			</div>
+		</div>
+	<footer th:replace="/layouts/footer :: footer"> </footer>
+	
+	<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+	<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+	<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+	</body>
+</html>

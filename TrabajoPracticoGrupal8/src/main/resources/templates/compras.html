@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Lista de Compras</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body>
+		<!-- Header -->
+		<header th:replace="/layouts/header :: header"> </header>
+		<!-- Fin header -->
+		<!-- Container -->
+		<div class="container-fluid">
+			<div class="row">
+				<section class="col-md-10">
+					<h3 class="text-center"> Listado de Compras</h3>
+					<hr>
+					<div class="text-center">
+						<div class="table-responsive">
+							<table class="table">
+								<thead class="thead-dark"> 
+									<tr> 
+										  <th scope="col"> Id Compra </th>
+									      <th scope="col"> Cantidad </th>
+									      <th scope="col"> Producto </th>
+									      <th scope="col"> Total </th>
+									      <th scope="col">Acciones</th>
+					 				</tr>
+								</thead>
+								<tbody>
+									 <tr th:each="compra : ${compras}">
+										    <td align="center" th:text="${compra.id}"></td>
+											<td align="center" th:text="${compra.cantidad}"></td>
+											<td align="center" th:text="${compra.producto.nombre}+' , '+${compra.producto.marca}"> </td>
+											<td align="center" th:text="${compra.total}"></td>	
+										    <td> 
+												<a th:href="@{/compra/editar/}+${compra.id}" class= "btn btn-warning" >EDITAR</a>
+												<a th:href="@{/compra/eliminar/}+${compra.id}" class= "btn btn-danger" >ELIMINAR</a>	
+											</td>						
+									 </tr>
+								</tbody>
+							</table>
+						</div>	
+					</div>					
+				 </section>
+				 <aside th:replace="/layouts/publicidad :: aside"> </aside>
+			</div>
+		</div>
+		<!-- Fin Container -->
+		<!-- Footer -->
+			<footer th:replace="/layouts/footer :: footer"> </footer>
+		<!-- Fin Footer -->
+	<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+	<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+	<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+	</body>
+</html>

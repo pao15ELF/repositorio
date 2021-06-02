@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Ultimo producto:</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+<body>
+	<header th:replace="/layouts/header :: header"> </header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10"> 
+				<h3 class="text-center">Detalle del producto</h3>
+				<div class="text-center">
+					<div class="table-responsive">
+						<table class="table">
+						  <thead>
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Nombre</th>
+						      <th scope="col">Precio</th>
+						      <th scope="col">Marca</th>
+						      <th scope="col">Stock</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">1</th>
+						     
+						      <td th:text="${producto.nombre}"></td>
+						      <td th:text="${producto.precio}"></td>
+						      <td th:text="${producto.marca}"></td>
+						      <td th:text="${producto.stock}"></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<aside th:replace="/layouts/publicidad :: aside"> </aside>
+		</div>
+	</div>
+		<footer th:replace="/layouts/footer :: footer"> </footer>
+		<script type="text/javascript" th:src=@{/webjars/jquery/3.5.1/jquery.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/popper.js/1.16.1-lts/popper.min.js}></script>
+		<script type="text/javascript" th:src=@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}></script>
+</body>
+</html>
