@@ -16,6 +16,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,35 +38,54 @@ public class Cliente {
 	@Column(name = "id")
 	private Long id;
 	
+	@NotEmpty(message="Tipo de documento no puede estar vacio")
 	@Column(name = "cli_tipoDocumento" , length = 10 , nullable = false)
 	private String tipoDocumento ;
 	
+	@Min(value=6000000,message = "El menor numero de dni valido es 6.000.000")
+	@Max(value=50000000, message="El mayor numero de dni valido es 50.000.000")
 	@Column(name = "cli_nroDocumento" , nullable = false)
 	private int nroDocumento;
 	
+	
+	@NotEmpty(message = "El campo nombre y apellido no puede estar vacio")
+	@Size(min = 5, max = 50, message="Como minimo 3 caracteres y como maximo 30 caracteres")
 	@Column(name = "cli_nombreApellido" , length = 50 , nullable = false)
 	private String nombreApellido;
 	
+	@Email(message = "Ingrese una direccion de email valida")
+	@NotEmpty(message = "Ingreso de email obligatorio.")
 	@Column(name = "cli_email" , length = 50 , nullable = false)
 	private String email;
 	
+	
+	@NotBlank(message = "El ingreso del campo contraseña obligatorio.")
+	@Size(min=6,max=15,message="La contraseña debe tener como minimo 6 caracteres y como maximo 15 caracteres")
 	@Column(name = "cli_password" , length = 15 , nullable = false)
 	private String password;
 	
+	@NotNull(message = "Debe ingresar fecha de nacimiento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "cli_fechaNacimiento" , nullable = false)
 	private LocalDate fechaNacimiento;
 	
+	
+	@Min(value=100, message="El valor de codigo de area es menor al valor minimo.")
+	@Max(value=1000, message="El valor de codigo de area es mayor al valor maximo.")
 	@Column(name = "cli_codigoATelefono" , nullable = false)
 	private int codigoAreaTelefono;
 	
+	@Min(value=1000000, message="El numero de telefono es menor al valor minimo.")
+	@Max(value=9999999, message="El numero de telefono es mayor al valor maximo.")
 	@Column(name = "cli_nroTelefono" , nullable = false)
 	private int nroTelefono;
 	
+	@NotNull(message ="Debe ingresar la fecha de la ultima compra")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "cli_fechaUltimaCompra" , nullable = false)
 	private LocalDate fechaUltimaCompra; 
 	
+	@Valid
 	@Autowired
 	@JoinColumn(name="cue_id")
 	@OneToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)

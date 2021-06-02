@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -26,16 +30,20 @@ public class Cuenta {
 	@Column(name="cue_id")
 	private Long id;
 	
+	@Range(min = 0, message="Saldo incorrecto")
 	@Column(name ="cue_saldo", nullable= false)
 	private double saldo;
 	
+	@NotNull(message= "Debe ingresar la fecha de creacion de la cuenta.")
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	@Column(name ="cue_fechaCreacion" , nullable =false)
 	private LocalDate fechaCreacion;
 	
+	@Size(min=6,max=8,message="La cuenta es ACTIVA o INACTIVA")
 	@Column(name ="cue_estado" , length=8 , nullable =false)
 	private String estado;
 	
+	@Valid
 	@Autowired
 	@OneToOne(mappedBy = "cuenta", fetch = FetchType.LAZY)
 	private Cliente cliente;
