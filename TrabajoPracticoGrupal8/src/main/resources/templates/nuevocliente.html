@@ -29,6 +29,9 @@
 							<option value="DNI">DNI</option> 
 							<option value="PASAPORTE">PASAPORTE</option> 
 						</select>					
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('tipoDocumento')}" th:errors="*{tipoDocumento}"></div>
+						<!-- offset para dejar un margen izq de 2 columnas para alinear el texto  -->
+						
 						<!-- Fin Tipo de Documento -->
 	
 						<!-- Numero de dni -->
@@ -36,6 +39,8 @@
 							    <label for="dni">Número de DNI</label>
 							    <input type="number" class="form-control" id="dni" th:field="*{nroDocumento}" placeholder="Ingrese su DNI">
 						</div>
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}"></div>
+					
 						<!-- Fin numero de dni -->
 						
 						<!-- Nombre y apellido -->
@@ -43,6 +48,8 @@
 							    <label for="nya">Nombre y Apellido</label>
 							    <input type="text" class="form-control" id="nya" th:field="*{nombreApellido}" placeholder="Ingrese su Nombre y Apellido">
 						</div>
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('nombreApellido')}" th:errors="*{nombreApellido}"></div>
+					
 						<!-- Fin nombre y apellido -->
 						
 						<!-- Email -->
@@ -50,6 +57,8 @@
 							    <label for="email">Email</label>
 							    <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Ingrese su email">
 						</div>	
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+					
 						<!-- Fin Email -->
 						
 						<!-- Contraseña -->
@@ -57,6 +66,8 @@
 							    <label for="password">Password</label>
 							    <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Ingrese su password">
 						</div>	
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+					
 						<!-- Fin contraseña -->
 						
 						<!-- Fec nacimiento -->
@@ -64,6 +75,8 @@
 							    <label for="fechanac">Fecha de Nacimiento</label>
 							    <input type="date" class="form-control" id="fechanac" th:field="*{fechaNacimiento}" placeholder="Ingrese su fecha de nacimiento">
 						</div>	
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+					
 						<!-- Fin fec de nacimiento -->
 						
 						<!-- Codigo de area -->
@@ -71,7 +84,8 @@
 							    <label for="codarea">Código de Area</label>
 							    <input type="number" class="form-control" id="codarea" th:field="*{codigoAreaTelefono}" >
 						</div>
-	
+	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('codigoAreaTelefono')}" th:errors="*{codigoAreaTelefono}"></div>
+					
 						<!-- Fin codigo de area -->
 						
 						<!-- Nro de telefono -->
@@ -79,6 +93,8 @@
 							    <label for="telefono">Número de Telefono</label>
 							    <input type="number" class="form-control" id="telefono" th:field="*{nroTelefono}" placeholder="Ingrese su numero de telefono">
 						</div>
+						<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('nroTelefono')}" th:errors="*{nroTelefono}"></div>
+					
 						<!-- Fin nro de telefono -->
 						
 						<!-- ultima compra -->
@@ -86,6 +102,7 @@
 							    <label for="fechaultcomp">Fecha de Ultima Compra</label>
 							    <input type="date" class="form-control" id="fechaultcomp" th:field="*{fechaUltimaCompra}">
 						</div>
+					    <div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('fechaUltimaCompra')}" th:errors="*{fechaUltimaCompra}"></div>
 					
 						<!-- fin ultima compra -->
 						
@@ -98,6 +115,8 @@
 								    <label for="cantSaldo">Saldo</label>
 								    <input type="number" class="form-control" id="cantSaldo" th:field="*{cuenta.saldo}" placeholder="Ingrese saldo de la cuenta">
 							</div>
+							<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cuenta.saldo')}" th:errors="*{cuenta.saldo}"></div>
+					        
 							<!-- Fin Saldo de la cuenta  -->
 							
 							<!-- Fecha de creación -->
@@ -105,6 +124,8 @@
 								    <label for="fecCreacion">Fecha de Creación</label>
 								    <input type= "date" class="form-control" id="fecCreacion" th:field="*{cuenta.fechaCreacion}" placeholder="Ingrese fecha de creacion">
 							</div>
+							<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cuenta.fechaCreacion')}" th:errors="*{cuenta.fechaCreacion}"></div>
+						
 							<!-- Fin fecha de creación  -->
 							
 							<!-- Seleccionar estado de la cuenta -->
@@ -114,7 +135,8 @@
 									<option value="activa">ACTIVA</option> 
 									<option value="inactiva">INACTIVA</option> 
 								</select>
-								
+								<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cuenta.estado')}" th:errors="*{cuenta.estado}"></div>
+						
 							<!-- Fin Seleccionar -->
 						<!-- FIN DATOS DE LA CUENTA -->
 						<br><br>

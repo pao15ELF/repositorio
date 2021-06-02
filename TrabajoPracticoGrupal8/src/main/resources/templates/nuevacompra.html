@@ -25,6 +25,7 @@
 										</option>
 										
 								</select>
+								<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('producto.id')}" th:errors="*{producto.id}"></div>
 						
 							<!-- Fin Seleccionar -->
 							<br>
@@ -33,7 +34,8 @@
 								    <label for="cantProd">Cantidad</label>
 								    <input type="number" class="form-control" id="cantProd" th:field="*{cantidad}" placeholder="Ingrese cantidad">
 							</div>
-				
+							<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+						
 							<!-- Fin cantidad  -->
 							<input type = "hidden" th:field="*{total}"/>
 							<br><br>

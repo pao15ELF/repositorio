@@ -42,4 +42,5 @@ public interface IProductoService {
 	 * @param id
 	 */
 	public void eliminarProducto(Long id);
+	
 }

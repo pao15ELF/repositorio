@@ -45,4 +45,16 @@ public class CompraServiceMysqlImp implements ICompraService {
 		return compra;
 	}
 
+	@Override
+	public List<Compra> buscarPorNombreProductoYTotal(double total, String nombre) {
+		List<Compra> listaCompras = compraRepository.findByTotalGreaterThanAndProductoNombreContaining(total, nombre);
+		return listaCompras;
+	}
+
+	@Override
+	public List<Compra> buscarPorTotal(double total) {
+		List<Compra> listaCompras = compraRepository.findByTotalGreaterThan(total);
+		return listaCompras;
+	}
+
 }
