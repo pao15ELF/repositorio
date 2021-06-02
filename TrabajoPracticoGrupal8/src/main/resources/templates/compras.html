@@ -42,7 +42,20 @@
 								</tbody>
 							</table>
 						</div>	
-					</div>					
+					</div>	
+				 	<h3> BUSQUEDA DE COMPRAS</h3>
+					<form th:action="@{/compra/buscar}" th:object="${auxCompra}" method="post">	
+						<div class="form-group">
+							<label for="prodNombre">Nombre del producto</label>
+							<input type="text" class="form-control" id="prodNombre" th:field="*{producto.nombre}" placeholder="Ingrese nombre del producto">
+						</div>
+						<div class="form-group">
+							<label for="prodNombre">Monto superior a</label>
+							<input type="number" class="form-control" id="prodNombre" th:field="*{total}" placeholder="Ingrese monto">
+						</div>
+						<br><br>
+						<button type="submit" class="btn btn-primary">Buscar</button>
+					</form>			
 				 </section>
 				 <aside th:replace="/layouts/publicidad :: aside"> </aside>
 			</div>

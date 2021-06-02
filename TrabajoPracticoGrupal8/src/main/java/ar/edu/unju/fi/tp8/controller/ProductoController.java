@@ -1,11 +1,14 @@
 package ar.edu.unju.fi.tp8.controller;
 
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,13 +39,20 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/producto/guardar")
-	public ModelAndView getProductoResultPage(@ModelAttribute("producto") Producto unProducto) {
+	public ModelAndView getProductoResultPage(@Valid @ModelAttribute("producto") Producto unProducto , BindingResult resultadoValidacion ) {
 		LOGGER.info("CONTROLLER: ProductoController");
 		LOGGER.info("METHOD: getProductoResultPage()");
 		LOGGER.info("RESULT: muestra en la pagina resultado_producto.html un mensaje que el producto se guardó exitosamente");
-		ModelAndView modelAndView = new ModelAndView("resultado_producto");
-		productoService.agregarProducto(unProducto);
-		return modelAndView;
+		ModelAndView modelAndView;
+		if (resultadoValidacion.hasErrors()) {
+			modelAndView = new ModelAndView("nuevoproducto");
+			modelAndView.addObject("producto", unProducto);
+			return modelAndView;
+		}else {
+			modelAndView = new ModelAndView("resultado_producto");
+			productoService.agregarProducto(unProducto);
+			return modelAndView;
+		}
 	}
 	
 	@GetMapping("/producto/ultimo")

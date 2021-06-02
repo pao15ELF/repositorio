@@ -37,4 +37,8 @@ public interface ICompraService {
 	 */
 	public Optional<Compra> buscarPorId(Long id);
 	
+	public List<Compra> buscarPorNombreProductoYTotal(double total, String nombre);
+	
+	public List<Compra> buscarPorTotal(double total);
+	
 }

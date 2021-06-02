@@ -2,11 +2,14 @@ package ar.edu.unju.fi.tp8.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,13 +41,19 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/cliente/guardar")
-	public ModelAndView getNuevoClientePage(@ModelAttribute("cliente") Cliente unCliente) {
+	public ModelAndView getNuevoClientePage(@Valid @ModelAttribute("cliente") Cliente unCliente , BindingResult resultadoValidacion) {
 		LOGGER.info("CONTROLLER: ClienteController");
 		LOGGER.info("METHOD: getNuevoClientePage() con parametros");
 		LOGGER.info("RESULT: guarda los datos registrados en el formulario de la nuevocliente.html, y muestra la pagina clientes.html");
-		ModelAndView mav = new ModelAndView("clientes");
-		clienteService.agregarCliente(unCliente);
-		mav.addObject("clientes", clienteService.obtenerListaClientes());
+		ModelAndView mav; 
+		if(resultadoValidacion.hasErrors()) {//si tiene errores
+			mav = new ModelAndView("nuevocliente");
+			mav.addObject("cliente", unCliente);
+		}else {//si no tiene errores
+			mav = new ModelAndView("clientes");
+			clienteService.agregarCliente(unCliente);
+			mav.addObject("clientes", clienteService.obtenerListaClientes());
+		}
 		return mav;
 	}
 	
