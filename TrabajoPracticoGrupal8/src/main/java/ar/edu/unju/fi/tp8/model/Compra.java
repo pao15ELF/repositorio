@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,11 +26,13 @@ public class Compra {
 	@Column(name = "id")
 	private Long id;
 
+	@Valid
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="prod_id")
 	private Producto producto;
 	
+	@Min(value= 1 , message = "La cantidad ingresada es menor al valor minimo.")
 	@Column(name = "com_cantidad" , nullable = false)
 	private int cantidad;
 	
